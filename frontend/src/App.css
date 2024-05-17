@@ -1,0 +1,4 @@
+.grid-cols-3 {
+    grid-template-columns: 20% 60% 20%;
+    gap: 2rem;
+  }
