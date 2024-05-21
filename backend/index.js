@@ -19,11 +19,6 @@ app.use(cookieParser());
 //APIs
 app.use("/api/v1/user",userRoute)
 
-app.get("/home",(req,res)=>{
-    res.status(200).json({
-        message:"coming from backend...."
-    })
-})
 
 
 app.listen(process.env.PORT , () => {
