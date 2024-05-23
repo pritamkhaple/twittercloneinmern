@@ -9,7 +9,7 @@ dotenv.config({
 
 const isAunthenticated = async (req,res,next) => {
     try {
-        const {token} = res.cookies;
+        const token = req.cookies.token;
         console.log(token);
         if (!token) {
             return res.status(401).json({
@@ -18,10 +18,11 @@ const isAunthenticated = async (req,res,next) => {
             })
         }
         const decode = await jwt.verify(token, process.env.TOKEN_SECRET)
-        console.log(decode);
-        req.user = decode.id;
+        req.user = decode.userId;
         next();
     } catch (error) {
         console.log(error);
     }
 }
+
+export default isAunthenticated;
