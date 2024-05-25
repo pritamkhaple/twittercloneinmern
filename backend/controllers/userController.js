@@ -117,3 +117,70 @@
             console.log(error)
         }
     }
+
+    export const getOtherUsers = async(req,res) =>{
+        try {
+            const {id} = req.params;
+            const otherUsers = await User.find({_id:{$ne:id}}).select("-password");
+            if (!otherUsers) {
+                return res.status(401).json({
+                    message:"Currently do not have any users"
+                })
+            };
+            return res.status(200).json({
+                otherUsers
+            })
+        } catch (error) {
+            console.log(error);
+            
+        }
+    }
+
+    export const follow = async (req,res) =>{
+        try {
+            const loggedInUserId = req.body.id; //Fakebhai is loogged in user 
+            const userId = req.params.id; //fake acc
+            const loggedInUser = await User.findById(loggedInUserId) //loggedin id i.e FakeBhai
+            const user = await User.findById(userId) //other users which will logged in will follow i.e fake acc
+            if (!user.followers.includes(loggedInUserId)){
+                await user.updateOne({$push:{followers:loggedInUserId}})
+                await loggedInUser.updateOne({$push:{following:userId}})
+            }
+            else{
+                return res.status(400).json({
+                    message: `You already follow ${user.name}`
+                })
+            };
+            return res.status({
+                message:`${loggedInUser.name} just followed ${user.name}`,
+                success:true,
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    export const unfollow = async (req,res) =>{
+        try {
+            const loggedInUserId = req.body.id; //Fakebhai is loogged in user 
+            const userId = req.params.id; //fake acc
+            const loggedInUser = await User.findById(loggedInUserId) //loggedin id i.e FakeBhai
+            const user = await User.findById(userId) //other users which will logged in will follow i.e fake acc
+            if (loggedInUser.following.includes(userId)){
+                await user.updateOne({$pull:{followers:loggedInUserId}})
+                await loggedInUser.updateOne({$pull:{following:userId}})
+            }
+            else{
+                return res.status(400).json({
+                    message: `User has not followed yet`
+                })
+            };
+            return res.status({
+                message:`${loggedInUser.name} just unfollowed ${user.name}`,
+                success:true,
+            })
+        } catch (error) {
+            console.log(error);
+            
+        }
+    }
