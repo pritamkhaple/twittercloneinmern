@@ -2,8 +2,14 @@ import React from "react";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import Avatar from "react-avatar";
+// import { useGetProfile } from "../hooks/useGetProfile";
+import { useSelector } from 'react-redux'
+import useGetProfile from "../hooks/useGetProfile";
 
 export default function Profile() {
+  // const id = "9879217e7ndsln8321"
+  const {user,profile} = useSelector(store=>store.user)
+  useGetProfile(user?._id);
   return (
     <div className="w-[50%] border-l border-r border-gray-200">
       <div className="">
@@ -15,7 +21,7 @@ export default function Profile() {
             <FaArrowLeftLong size={"24px"} />
           </Link>
           <div className="ml-2">
-            <h1 className="font-bold text-lg">Patel Bhaisab</h1>
+            <h1 className="font-bold text-lg">{profile?.name}</h1>
             <p className="text-gray-500 text-sm">10 posts</p>
           </div>
         </div>
@@ -37,8 +43,8 @@ export default function Profile() {
         </div>
         </div>
         <div className="ml-4">
-            <h1 className="font-bold text-xl">Khaple</h1>
-            <p className="text-sm text-gray-500">@Khaplebhaisaab</p>
+            <h1 className="font-bold text-xl">{profile?.name}</h1>
+            <p className="text-sm text-gray-500">{`@${profile?.username}`}</p>
         </div>
         <div className="ml-4 text-sm text-gray-800">
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
