@@ -6,12 +6,16 @@ import { IoIosNotifications } from "react-icons/io";
 import { CgMoreO } from "react-icons/cg";
 import { IoIosOptions } from "react-icons/io";
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 
 
 
 function LeftSideBar() {
+
+  const {user} = useSelector(store=>store.user);
+
   return (
     <div className='w-[20%]'>
       <div className='ml-2'>
@@ -30,7 +34,7 @@ function LeftSideBar() {
         <div className='flex items-center  my-5 hover:bg-gray-200 rounded-full hover:cursor-pointer px-4 py-2'>
         <FaMessage  size={"24px"} className='mr-5'/><h3 className='font-bold text-left'>Messages</h3>
         </div>
-        <Link to="/profile" className='flex items-center  my-5 hover:bg-gray-200 rounded-full hover:cursor-pointer px-4 py-2'>
+        <Link to={`/profile/${user?._id}`} className='flex items-center  my-5 hover:bg-gray-200 rounded-full hover:cursor-pointer px-4 py-2'>
         <FaUserCircle  size={"24px"} className='mr-5'/><h3 className='font-bold text-left'>Profile</h3>
         </Link>
         <div className='flex items-center  my-5 hover:bg-gray-200 rounded-full hover:cursor-pointer px-4 py-2'>

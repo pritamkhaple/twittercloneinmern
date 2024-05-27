@@ -1,6 +1,6 @@
 import React from "react";
 import { FaArrowLeftLong } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Avatar from "react-avatar";
 // import { useGetProfile } from "../hooks/useGetProfile";
 import { useSelector } from 'react-redux'
@@ -9,7 +9,8 @@ import useGetProfile from "../hooks/useGetProfile";
 export default function Profile() {
   // const id = "9879217e7ndsln8321"
   const {user,profile} = useSelector(store=>store.user)
-  useGetProfile(user?._id);
+  const {id} = useParams()
+  useGetProfile(id);
   return (
     <div className="w-[50%] border-l border-r border-gray-200">
       <div className="">

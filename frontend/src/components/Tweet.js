@@ -5,7 +5,7 @@ import { FaRegCommentAlt } from "react-icons/fa";
 import { AiOutlineRetweet } from "react-icons/ai";
 import { CiBookmark } from "react-icons/ci";
 
-export default function Tweet() {
+export default function Tweet({tweet}) {
   return (
     <div className="border-b border-gray-200">
       <div>
@@ -23,7 +23,7 @@ export default function Tweet() {
               <p className="text-gray-500 text-sm ml-2">@khapledevloper . 1m</p>
             </div>
             <div>
-              <p>Hi lorem lsdoiu ewifeb oinid ubewin inqndi</p>
+              <p>{tweet?.description}</p>
             </div>
             <div className="flex justify-between my-2">
               <div className="flex items-center">
