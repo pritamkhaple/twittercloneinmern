@@ -40,7 +40,7 @@ function LeftSideBar() {
         <div className='flex items-center  my-5 hover:bg-gray-200 rounded-full hover:cursor-pointer px-4 py-2'>
         <CgMoreO  size={"24px"} className='mr-5'/><h3 className='font-bold text-left'>Logout</h3>
         </div>
-        <p> last video minutes 5:48:00</p>
+        <p> last video minutes 6:21:00</p>
       </div>
 
       <button className='px-4 py-2 w-full rounded-full text-white font-bold text-md bg-[cornflowerblue]'>Post</button>
