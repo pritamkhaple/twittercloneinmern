@@ -17,7 +17,7 @@ export default function Body() {
                     element:<Feed/>
                 },
                 {
-                    path:"/profile",
+                    path:"/profile/:id",
                     element:<Profile/>
                 }
             ]
