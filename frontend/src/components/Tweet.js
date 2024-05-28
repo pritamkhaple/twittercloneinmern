@@ -19,8 +19,8 @@ export default function Tweet({tweet}) {
           </div>
           <div className="ml-2 w-full">
             <div className="flex items-center">
-              <h1 className="font-bold">Khaple</h1>
-              <p className="text-gray-500 text-sm ml-2">@khapledevloper . 1m</p>
+              <h1 className="font-bold">{tweet?.userDetails[0]?.name}</h1>
+              <p className="text-gray-500 text-sm ml-2">{`@${tweet?.userDetails[0]?.username} . 1m`}</p>
             </div>
             <div>
               <p>{tweet?.description}</p>
@@ -28,7 +28,7 @@ export default function Tweet({tweet}) {
             <div className="flex justify-between my-2">
               <div className="flex items-center">
                 <div className="p-2 hover:bg-green-200 cursor-pointer rounded-full"><SlLike size={17} /></div>
-                <p className="">0</p>
+                <p className="">{tweet?.like?.length}</p>
               </div>
               <div className="flex items-center">
                <div className="p-2 hover:bg-green-200 cursor-pointer rounded-full"> <FaRegCommentAlt size={16} /></div>
