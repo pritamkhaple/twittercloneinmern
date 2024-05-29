@@ -1,10 +1,38 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useState } from 'react'
 import Avatar from 'react-avatar'
 import { FaRegImage } from "react-icons/fa";
-
+import {TWEET_API_END_POINT} from  "../utils/constant";
+import toast from 'react-hot-toast';
+import { useDispatch, useSelector } from 'react-redux';
+import { getRefresh } from '../redux/tweetSlice';
 
 
 export default function CreatePost() {
+
+    const  [description, setDescription] = useState("");
+    const {user} = useSelector(store=>store.user)
+    const dispatch = useDispatch();
+
+    const submitHandler = async () =>{
+        try {
+            const res = await axios.post(`${TWEET_API_END_POINT}/create`, {description, id:user?._id}, {
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                withCredentials:true,
+            });
+            dispatch(getRefresh())
+            if (res.data.success){
+                toast.success(res.data.message);
+            }
+        } catch (error) {
+            toast.error(error.response.data.message);
+            console.log(error)   
+        }
+        setDescription("");
+    }
+
   return (
     <div className='w-[100%]'>
         <div className=''>
@@ -16,13 +44,13 @@ export default function CreatePost() {
             <div className='flex items-center p-5 '>
                 <div>
             <Avatar src="https://media.licdn.com/dms/image/D4D35AQEmtqBn5s3QYg/profile-framedphoto-shrink_200_200/0/1708930324793?e=1715958000&v=beta&t=8ksw4svqMpxHWrGzQy49aUMghR_S0A1xFpD0eOKirbY" size="30" round={true} /></div>
-                <input type='text' placeholder='What is happeining?' className='w-full ml-2 outline-none border-none text-lg'></input>
+                <input type='text' value={description} onChange={(e)=>setDescription(e.target.value)} placeholder='What is happeining?' className='w-full ml-2 outline-none border-none text-lg'></input>
             </div>
             <div className='flex items-center justify-between my-4 border-b border-gray-100 px-2 py-2'>
                 <div>
                     <FaRegImage size={"20px"}/>
                 </div>
-                <button className='px-4 py-1 rounded-full text-white font-semibold text-sm text-right bg-[cornflowerblue]'>Post</button>
+                <button onClick={submitHandler} className='px-4 py-1 rounded-full text-white font-semibold text-sm text-right bg-[cornflowerblue]'>Post</button>
             </div>
         </div>
         <div></div>
