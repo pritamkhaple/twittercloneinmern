@@ -40,7 +40,13 @@ export default function Profile() {
           />
         </div>
         <div className="text-right m-4 ">
+            {
+              profile?._id === user?._id ? (
             <button className="px-4 py-2 hover:bg-gray-200 rounded-full border border-gray-400">Edit Profile</button>
+              ) : (
+                <button className="px-4 py-2 hover:border-gold text-white rounded-full bg-black border border-black">{user.following.includes(id) ? "Following" : "Follow"}</button>
+              )
+            }
         </div>
         </div>
         <div className="ml-4">
