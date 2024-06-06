@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 const corsOptions = {
-    origin: "*",
+    origin: "https://twitter-clone-in-mern-frontend.vercel.app",
     methods: ["POST", "GET"],
     credentials: true
 };
