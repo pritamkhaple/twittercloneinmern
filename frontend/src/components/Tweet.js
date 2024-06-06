@@ -46,7 +46,7 @@ export default function Tweet({tweet}) {
         <div className="flex items-center p-4 w-full">
           <div>
             <Avatar
-              src="https://media.licdn.com/dms/image/D4D35AQEmtqBn5s3QYg/profile-framedphoto-shrink_200_200/0/1708930324793?e=1715958000&v=beta&t=8ksw4svqMpxHWrGzQy49aUMghR_S0A1xFpD0eOKirbY"
+              src="https://images.pexels.com/photos/953457/pexels-photo-953457.jpeg?auto=compress&cs=tinysrgb&w=600"
               size="30"
               round={true}
             />

@@ -47,10 +47,10 @@ function LeftSideBar() {
         <IoIosOptions  size={"24px"} className='mr-5'/><h3 className='font-bold text-left'>Explore</h3>
         </div>
         <div className='flex items-center  my-5 hover:bg-gray-200 rounded-full hover:cursor-pointer px-4 py-2'>
-        <IoIosNotifications  size={"24px"} className='mr-5'/><h3 className='font-bold text-left'>Notification</h3>
+        <IoIosNotifications  size={"23px"} className='mr-5'/><h3 className='font-bold text-left'>Notification</h3>
         </div>
         <div className='flex items-center  my-5 hover:bg-gray-200 rounded-full hover:cursor-pointer px-4 py-2'>
-        <FaMessage  size={"24px"} className='mr-5'/><h3 className='font-bold text-left'>Messages</h3>
+        <FaMessage  size={"22px"} className='mr-5'/><h3 className='font-bold text-left'>Messages</h3>
         </div>
         <Link to={`/profile/${user?._id}`} className='flex items-center  my-5 hover:bg-gray-200 rounded-full hover:cursor-pointer px-4 py-2'>
         <FaUserCircle  size={"24px"} className='mr-5'/><h3 className='font-bold text-left'>Profile</h3>
@@ -58,7 +58,6 @@ function LeftSideBar() {
         <div onClick={logoutHandler} className='flex items-center  my-5 hover:bg-gray-200 rounded-full hover:cursor-pointer px-4 py-2'>
         <CgMoreO  size={"24px"} className='mr-5'/><h3 className='font-bold text-left'>Logout</h3>
         </div>
-        <p> last video minutes exact 8:11:22 but start before 30 sec to understand</p>
       </div>
 
       <button className='px-4 py-2 w-full rounded-full text-white font-bold text-md bg-[cornflowerblue]'>Post</button>
