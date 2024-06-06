@@ -28,13 +28,13 @@ export default function Login() {
             }) 
             dispatch(getUser(res?.data?.user)); 
             console.log(res);
-            if (res.data.success) {
+            if (res?.data?.success) {
                 navigate("/");
                 toast.success(res.data.message);
             }
             
         } catch (error) {
-            toast.success(error.response.data.message);
+            toast.success(error.response?.data?.message);
             console.log(error);
             
         }
@@ -48,13 +48,13 @@ export default function Login() {
                 withCredentials:true
             }) 
             console.log(res);
-            if (res.data.success) {
+            if (res?.data?.success) {
                 setIsLogin(true)
-                toast.success(res.data.message);
+                toast.success(res?.data?.message);
             }
             
         } catch (error) {
-            toast.success(error.response.data.message);
+            toast.success(error.response?.data?.message);
             console.log(error);
             
         }
