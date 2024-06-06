@@ -6,8 +6,12 @@ import { IoIosNotifications } from "react-icons/io";
 import { CgMoreO } from "react-icons/cg";
 import { IoIosOptions } from "react-icons/io";
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
+import { USER_API_END_POINT } from '../utils/constant';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import { getMyPriofile, getOtherUsers, getUser } from '../redux/userSlice';
 
 
 
@@ -15,6 +19,20 @@ import { useSelector } from 'react-redux';
 function LeftSideBar() {
 
   const {user} = useSelector(store=>store.user);
+  const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const logoutHandler = async () =>{
+      try {
+          const res = await axios.get(`${USER_API_END_POINT}/logout`)
+          dispatch(getUser(null))
+          dispatch(getOtherUsers(null))
+          dispatch(getMyPriofile(null))
+          navigate('/login')
+          toast.success(res.data.message);
+      } catch (error) {
+          console.log(error)
+      }
+  }
 
   return (
     <div className='w-[20%]'>
@@ -37,10 +55,10 @@ function LeftSideBar() {
         <Link to={`/profile/${user?._id}`} className='flex items-center  my-5 hover:bg-gray-200 rounded-full hover:cursor-pointer px-4 py-2'>
         <FaUserCircle  size={"24px"} className='mr-5'/><h3 className='font-bold text-left'>Profile</h3>
         </Link>
-        <div className='flex items-center  my-5 hover:bg-gray-200 rounded-full hover:cursor-pointer px-4 py-2'>
+        <div onClick={logoutHandler} className='flex items-center  my-5 hover:bg-gray-200 rounded-full hover:cursor-pointer px-4 py-2'>
         <CgMoreO  size={"24px"} className='mr-5'/><h3 className='font-bold text-left'>Logout</h3>
         </div>
-        <p> last video minutes exact 7:40:42 but start before 30 sec to understand</p>
+        <p> last video minutes exact 8:11:22 but start before 30 sec to understand</p>
       </div>
 
       <button className='px-4 py-2 w-full rounded-full text-white font-bold text-md bg-[cornflowerblue]'>Post</button>
