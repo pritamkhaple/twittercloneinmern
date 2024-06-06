@@ -47,10 +47,10 @@ function LeftSideBar() {
         <IoIosOptions  size={"24px"} className='mr-5'/><h3 className='font-bold text-left'>Explore</h3>
         </div>
         <div className='flex items-center  my-5 hover:bg-gray-200 rounded-full hover:cursor-pointer px-4 py-2'>
-        <IoIosNotifications  size={"24px"} className='mr-5'/><h3 className='font-bold text-left'>Notification</h3>
+        <IoIosNotifications  size={"23px"} className='mr-5'/><h3 className='font-bold text-left'>Notification</h3>
         </div>
         <div className='flex items-center  my-5 hover:bg-gray-200 rounded-full hover:cursor-pointer px-4 py-2'>
-        <FaMessage  size={"24px"} className='mr-5'/><h3 className='font-bold text-left'>Messages</h3>
+        <FaMessage  size={"22px"} className='mr-5'/><h3 className='font-bold text-left'>Messages</h3>
         </div>
         <Link to={`/profile/${user?._id}`} className='flex items-center  my-5 hover:bg-gray-200 rounded-full hover:cursor-pointer px-4 py-2'>
         <FaUserCircle  size={"24px"} className='mr-5'/><h3 className='font-bold text-left'>Profile</h3>

@@ -52,7 +52,7 @@ export default function CreatePost() {
         <div className=''>
             <div className='flex items-center p-5 '>
                 <div>
-            <Avatar src="https://media.licdn.com/dms/image/D4D35AQEmtqBn5s3QYg/profile-framedphoto-shrink_200_200/0/1708930324793?e=1715958000&v=beta&t=8ksw4svqMpxHWrGzQy49aUMghR_S0A1xFpD0eOKirbY" size="30" round={true} /></div>
+            <Avatar src="https://images.pexels.com/photos/953457/pexels-photo-953457.jpeg?auto=compress&cs=tinysrgb&w=600" size="30" round={true} /></div>
                 <input type='text' value={description} onChange={(e)=>setDescription(e.target.value)} placeholder='What is happeining?' className='w-full ml-2 outline-none border-none text-lg'></input>
             </div>
             <div className='flex items-center justify-between my-4 border-b border-gray-100 px-2 py-2'>
