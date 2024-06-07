@@ -38,24 +38,6 @@ const corsOptions = {
 // Apply CORS middleware
 app.use(cors(corsOptions));
 
-// Manually add CORS headers for debugging
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "https://twitter-clone-in-mern-frontend.vercel.app");
-    res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-    res.header("Access-Control-Allow-Credentials", "true");
-    next();
-});
-
-// Pre-flight OPTIONS request handler for all routes
-app.options("*", (req, res) => {
-    res.header("Access-Control-Allow-Origin", "https://twitter-clone-in-mern-frontend.vercel.app/*");
-    res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-    res.header("Access-Control-Allow-Credentials", "true");
-    res.sendStatus(204); // Send OK status for preflight
-});
-
 // APIs
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/tweet", tweetRoute);
