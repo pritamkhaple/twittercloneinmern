@@ -49,7 +49,7 @@ app.use((req, res, next) => {
 
 // Pre-flight OPTIONS request handler for all routes
 app.options("*", (req, res) => {
-    res.header("Access-Control-Allow-Origin", "https://twitter-clone-in-mern-frontend.vercel.app");
+    res.header("Access-Control-Allow-Origin", "https://twitter-clone-in-mern-frontend.vercel.app/*");
     res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
     res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
     res.header("Access-Control-Allow-Credentials", "true");
