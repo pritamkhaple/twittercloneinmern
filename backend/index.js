@@ -27,34 +27,22 @@ app.use((req, res, next) => {
 });
 
 // CORS Configuration
+const whitelist = ['https://twitter-clone-in-mern-frontend.vercel.app'];
 const corsOptions = {
-    origin: "https://twitter-clone-in-mern-frontend.vercel.app", // Allow requests from this origin
-    methods: ["POST", "GET", "OPTIONS"], // Allowed HTTP methods
-    credentials: true, // Allow credentials (cookies)
-    allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
-    optionsSuccessStatus: 204 // Response status for OPTIONS requests
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  },
+  methods: ["POST", "GET", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
 };
 
 // Apply CORS middleware
 app.use(cors(corsOptions));
-
-// Manually add CORS headers for debugging
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "https://twitter-clone-in-mern-frontend.vercel.app");
-    res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-    res.header("Access-Control-Allow-Credentials", "true");
-    next();
-});
-
-// Pre-flight OPTIONS request handler for all routes
-app.options("*", (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-    res.header("Access-Control-Allow-Credentials", "true");
-    res.sendStatus(204); // Send OK status for preflight
-});
 
 // APIs
 app.use("/api/v1/user", userRoute);
