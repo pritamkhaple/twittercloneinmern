@@ -20,6 +20,7 @@ export default function Login() {
     if (isLogin) {
         //login
         try {
+          console.log("Working1");
             const res =  await axios.post(`${USER_API_END_POINT}/login`,{email,password},{
                 headers: {
                     "Content-Type": "application/json"
@@ -28,13 +29,14 @@ export default function Login() {
             }) 
             dispatch(getUser(res?.data?.user)); 
             console.log(res);
-            console.log("Working");
+            console.log("Working2");
             if (res.data.success) {
                 navigate("/");
                 toast.success(res.data.message);
             }
             
         } catch (error) {
+          console.log("Working3");
             toast.success(error.response.data.message);
             console.log(error);
             
