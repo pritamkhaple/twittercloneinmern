@@ -37,7 +37,8 @@ const corsOptions = {
     }
   },
   methods: ["POST", "GET", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
+  // allowedHeaders: ["Content-Type", "Authorization"],
+  allowedHeaders: "*",
   credentials: true
 };
 
