@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getUser } from "../redux/userSlice";
-import privateAxios from ../utils/AxiosHelper.js;
+import privateAxios from "../utils/AxiosHelper.js";
 
 export default function Login() {
   const [isLogin, setIsLogin] = useState(true);
