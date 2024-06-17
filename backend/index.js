@@ -29,6 +29,9 @@ app.use((req, res, next) => {
     next();
 });
 
+// Handle preflight requests
+app.options('*', cors(corsOptions));
+
 // Other middlewares
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
