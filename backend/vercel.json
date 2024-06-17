@@ -13,7 +13,7 @@
           ]
         },
         {
-          "source": "/vercel_app_domain_name/(.*)",
+          "source": "/twittercloneinmern-fe.vercel.app/(.*)",
           "headers": [
             { "key": "Access-Control-Allow-Origin", "value": "https://twittercloneinmern-fe.vercel.app" }
           ]
