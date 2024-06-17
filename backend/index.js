@@ -20,6 +20,11 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
+// Manually set Access-Control-Allow-Credentials header
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Credentials", "true");
+    next();
+});
 
 // Other middlewares
 app.use(express.urlencoded({ extended: true }));
