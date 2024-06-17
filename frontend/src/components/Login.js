@@ -28,6 +28,7 @@ export default function Login() {
             }) 
             dispatch(getUser(res?.data?.user)); 
             console.log(res);
+            console.log("Working");
             if (res.data.success) {
                 navigate("/");
                 toast.success(res.data.message);
@@ -48,6 +49,7 @@ export default function Login() {
                 withCredentials:true
             }) 
             console.log(res);
+            
             if (res.data.success) {
                 setIsLogin(true)
                 toast.success(res.data.message);
@@ -56,6 +58,7 @@ export default function Login() {
         } catch (error) {
             toast.success(error.response.data.message);
             console.log(error);
+            
             
         }
     }
