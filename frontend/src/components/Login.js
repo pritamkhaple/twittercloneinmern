@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getUser } from "../redux/userSlice";
+import privateAxios from ../utils/AxiosHelper.js;
 
 export default function Login() {
   const [isLogin, setIsLogin] = useState(true);
@@ -20,8 +21,7 @@ export default function Login() {
     if (isLogin) {
         //login
         try {
-          console.log("Working1");
-            const res =  await axios.post(`${USER_API_END_POINT}/login`,{email,password},{
+            const res =  await privateAxios.post(`${USER_API_END_POINT}/login`,{email,password},{
                 headers: {
                     "Content-Type": "application/json"
                 },
@@ -29,14 +29,12 @@ export default function Login() {
             }) 
             dispatch(getUser(res?.data?.user)); 
             console.log(res);
-            console.log("Working2");
             if (res.data.success) {
                 navigate("/");
                 toast.success(res.data.message);
             }
             
         } catch (error) {
-          console.log("Working3");
             toast.success(error.response.data.message);
             console.log(error);
             
