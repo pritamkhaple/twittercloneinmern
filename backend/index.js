@@ -13,7 +13,7 @@ const app = express();
 
 // Middleware to set CORS headers
 const corsOptions = {
-    origin: "https://twittercloneinmern-fe.vercel.app",
+    origin: "http://twittercloneinmern-fe.vercel.app",
     optionsSuccessStatus: 200
     // methods: ["GET", "POST", "OPTIONS", "PUT", "PATCH", "DELETE"],
     // allowedHeaders: ["Content-Type", "Authorization", "Access-Control-Allow-Origin"],
