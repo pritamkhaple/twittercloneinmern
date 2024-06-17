@@ -18,13 +18,10 @@ export default function Login() {
   const submitHandler = async (e) => {
     e.preventDefault();
     if (isLogin) {
-      const privateAxios = axios.create({
-        baseURL: 'https://twittercloneinmern-backend.vercel.app',
-        withCredentials: true,
-      });
+      
         //login
         try {
-            const res =  await privateAxios.post(`${USER_API_END_POINT}/login`,{email,password},{
+            const res =  await axios.post(`${USER_API_END_POINT}/login`,{email,password},{
                 headers: {
                     "Content-Type": "application/json"
                 },
