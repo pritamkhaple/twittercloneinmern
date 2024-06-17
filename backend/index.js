@@ -12,13 +12,13 @@ databaseConnection();
 const app = express();
 
 // Middleware to set CORS headers
-// const corsOptions = {
-//     origin: "http://twittercloneinmern-fe.vercel.app",
-//     // methods: ["GET", "POST", "OPTIONS", "PUT", "PATCH", "DELETE"],
-//     // allowedHeaders: ["Content-Type", "Authorization", "Access-Control-Allow-Origin"],
-//     // credentials: true
-// };
-// app.use(cors(corsOptions));
+const corsOptions = {
+    origin: "http://twittercloneinmern-fe.vercel.app",
+    methods: ["GET", "POST", "OPTIONS", "PUT", "PATCH", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization", "Access-Control-Allow-Origin"],
+    credentials: true
+};
+app.use(cors(corsOptions));
 
 
 // Other middlewares
