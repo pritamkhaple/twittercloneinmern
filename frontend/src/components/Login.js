@@ -26,8 +26,7 @@ export default function Login() {
         try {
             const res =  await privateAxios.post(`${USER_API_END_POINT}/login`,{email,password},{
                 headers: {
-                    "Content-Type": "application/json",
-                    "Access-Control-Allow-Origin": "*"
+                    "Content-Type": "application/json"
                 },
                 withCredentials:true
             }) 
