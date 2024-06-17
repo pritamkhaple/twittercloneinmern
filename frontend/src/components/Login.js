@@ -5,7 +5,6 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getUser } from "../redux/userSlice";
-import privateAxios from "../utils/AxiosHelper.js";
 
 export default function Login() {
   const [isLogin, setIsLogin] = useState(true);
@@ -19,6 +18,10 @@ export default function Login() {
   const submitHandler = async (e) => {
     e.preventDefault();
     if (isLogin) {
+      const privateAxios = axios.create({
+        baseURL: 'https://twittercloneinmern-backend.vercel.app',
+        withCredentials: true,
+      });
         //login
         try {
             const res =  await privateAxios.post(`${USER_API_END_POINT}/login`,{email,password},{
