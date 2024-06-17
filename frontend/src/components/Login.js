@@ -37,6 +37,7 @@ export default function Login() {
         } catch (error) {
             toast.success(error.response.data.message);
             console.log(error);
+            console.log(error.response);
             
         }
     } else {
