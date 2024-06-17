@@ -5,7 +5,7 @@ import databaseConnection from "./config/database.js";
 import cookieParser from "cookie-parser";
 import userRoute from './routes/userRoute.js';
 import tweetRoute from './routes/tweetRoute.js';
-import cors from "cors";  // This should not be here for frontend
+// import cors from "cors";  // This should not be here for frontend
 
 dotenv.config({ path: ".env" });
 databaseConnection();
